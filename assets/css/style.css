@@ -39,7 +39,6 @@ header {
 
 nav {
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 
@@ -47,7 +46,6 @@ nav {
     display: flex;
     align-items: center;
     gap: 15px;
-    margin-right: auto;
 }
 
 .logo {
@@ -314,6 +312,16 @@ footer {
     font-size: 0.9rem;
 }
 
+/* Mobile menu styles */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    margin-left: auto;
+    color: var(--dark);
+}
 /* RESPONSIVE STYLES */
 @media (max-width: 768px) {
     body {
@@ -330,11 +338,32 @@ footer {
     }
     
     .nav-links {
-        margin-left: 0; /* Resetujte za mobilni prikaz */
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        z-index: 999;
+        display: none;
+    }
+    
+    .nav-links.active {
+        transform: translateY(0);
+        display: flex;
+    }
+    
+    .nav-links li {
+        margin: 15px 0;
     }
     
     .menu-toggle {
-        margin-left: auto; /* Ostaje desno */
+        display: block;
     }
     
     .hero h1 {
