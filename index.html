@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Family Dental - Profesionalna stomatološka ordinacija</title>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -12,16 +12,15 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo-container">
-                <a href="#"><img src="assets/img/logo.svg" alt="Family Dental Logo" class="logo"></a>
-                <span class="clinic-name">Family Dental</span>
-                </div>               
+                <div class="logo-wrapper">
+                    <a href="#"><img src="./assets/img/logo.svg" alt="Family Dental Logo" class="logo"></a>
+                    <span class="clinic-name">Family Dental</span>
+                </div>
                 <ul class="nav-links">
                     <li><a href="#">Početna</a></li>
                     <li><a href="#services">Usluge</a></li>
-                    <li><a href="#about">O nama</a></li>
+                    <li><a href="#booking">Zakaži termin</a></li>
                     <li><a href="#contact">Kontakt</a></li>
-                    <li><a href="#booking" class="btn">Zakaži termin</a></li>
                 </ul>
             </nav>
         </div>
@@ -30,12 +29,10 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="parallax-bg"></div>
-        <div class="container">
-            <div class="hero-content">
-                <h1>Osmeh koji inspiriše poverenje</h1>
-                <p>Family Dental pruža vrhunsku stomatološku negu uz pažljiv pristup svakom pacijentu.</p>
-                <a href="#booking" class="btn">Zakaži pregled</a>
-            </div>
+        <div class="hero-content">
+            <h1>Osmeh koji inspiriše poverenje</h1>
+            <p>Family Dental pruža vrhunsku stomatološku negu uz pažljiv pristup svakom pacijentu.</p>
+            <a href="#booking" class="btn">Zakaži pregled</a>
         </div>
     </section>
 
@@ -47,7 +44,27 @@
                 <p>Pružamo kompletnu stomatološku negu korišćenjem najsavremenije tehnologije.</p>
             </div>
             <div class="services-grid">
-                <!-- Service cards ovde -->
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Preventivna stomatologija</h3>
+                        <p>Redovni pregledi i profesionalno čišćenje zuba za održavanje oralnog zdravlja.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Estetska stomatologija</h3>
+                        <p>Izbjeljivanje zuba, furniri i druge procedure za savršen osmeh.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                    <div class="service-content">
+                        <h3>Oralna hirurgija</h3>
+                        <p>Vađenje zuba, implantologija i druge hirurške intervencije.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -60,7 +77,28 @@
                 <p>Popunite formu i mi ćemo vas kontaktirati za potvrdu termina.</p>
             </div>
             <form class="booking-form" action="https://formsubmit.co/vasemail@example.com" method="POST">
-                <!-- Forma ovde -->
+                <input type="hidden" name="_subject" value="Novi zahtev za zakazivanje">
+                <div class="form-group">
+                    <label for="name">Ime i prezime</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Telefon</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="date">Željeni datum</label>
+                    <input type="date" id="date" name="date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Dodatne napomene</label>
+                    <textarea id="message" name="message" class="form-control" rows="4"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Pošalji zahtev</button>
             </form>
         </div>
     </section>
@@ -68,10 +106,35 @@
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
-            <!-- Footer sadržaj ovde -->
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Family Dental</h3>
+                    <p>Profesionalna stomatološka ordinacija koja se brine o vašem osmehu i zdravlju zuba.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Kontakt</h3>
+                    <div class="contact-info">
+                        <p><i>📍</i> Adresa: Example Street 123, Beograd</p>
+                        <p><i>📞</i> Telefon: +381 64 123 4567</p>
+                        <p><i>✉️</i> Email: info@familydental.com</p>
+                        <p><i>🕒</i> Radno vreme: Pon-Sub 08:00-20:00</p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Pratite nas</h3>
+                    <div class="social-links">
+                        <a href="#"><i>📱</i></a>
+                        <a href="#"><i>📸</i></a>
+                        <a href="#"><i>🔗</i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Family Dental. Sva prava zadržana.</p>
+            </div>
         </div>
     </footer>
 
-    <script src="assets/js/main.js"></script>
+    <script src="./assets/js/main.js"></script>
 </body>
 </html>
