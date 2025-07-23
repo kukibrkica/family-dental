@@ -57,11 +57,11 @@ nav {
 
 /* NAVIGACIJA */
 .nav-links {
-    display: flex;
-    list-style: none;
-    gap: 25px;
-    margin-left: auto;
-    transition: all 0.3s ease;
+    display: none; /* Inicijalno sakriven na mobilnim */
+}
+
+.nav-links.active {
+    display: flex; /* Prikazuje se kada je aktiviran */
 }
 
 .nav-links li {
