@@ -40,6 +40,7 @@ nav {
 }
 
 .logo {
+    object-fit: contain;
     height: 50px; /* Fiksna visina */
     width: auto; /* Čuva proporcije */
     max-width: 120px; /* Maksimalna širina */
