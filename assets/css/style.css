@@ -47,6 +47,7 @@ nav {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-right: auto;
 }
 
 .logo {
@@ -66,6 +67,7 @@ nav {
     display: flex;
     list-style: none;
     gap: 30px;
+    margin-left: auto;
 }
 
 .nav-links a {
@@ -328,7 +330,11 @@ footer {
     }
     
     .nav-links {
-        gap: 15px;
+        margin-left: 0; /* Resetujte za mobilni prikaz */
+    }
+    
+    .menu-toggle {
+        margin-left: auto; /* Ostaje desno */
     }
     
     .hero h1 {
