@@ -25,6 +25,31 @@ header {
     position: fixed;
     width: 100%;
     z-index: 1000;
+    padding: 10px 0;
+}
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo {
+    height: 50px; /* Fiksna visina */
+    width: auto; /* Čuva proporcije */
+    max-width: 120px; /* Maksimalna širina */
+}
+
+.clinic-name {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--secondary);
 }
 
 /* Hero sekcija sa parallax */
@@ -57,11 +82,16 @@ header {
 
 /* Responsive */
 @media (max-width: 768px) {
-    .nav-links {
-        display: none;
+    .logo {
+        height: 40px;
+        max-width: 100px;
     }
     
-    .parallax-bg {
-        background-attachment: scroll !important;
+    .clinic-name {
+        font-size: 1.2rem;
+    }
+    
+    .logo-container {
+        gap: 10px;
     }
 }
