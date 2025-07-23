@@ -49,9 +49,9 @@ nav {
 }
 
 .logo {
-    height: 50px;
+    height: 60px; /* Povećajte po potrebi */
     width: auto;
-    max-width: 120px;
+    max-width: none; /* UKLONITE OGRANIČENJE ŠIRINE */
 }
 
 .nav-links {
@@ -322,8 +322,7 @@ footer {
     }
     
     .logo {
-        height: 40px;
-        max-width: 100px;
+        height: 50px; /* Prilagodite po potrebi */
     }
     
     
