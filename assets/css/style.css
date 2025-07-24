@@ -99,7 +99,7 @@ nav {
 }
 
 .parallax-bg {
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -110,16 +110,16 @@ nav {
     transform: translateZ(0);
 }
 
-.parallax-bg::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4); /* Crni overlay sa 40% providnošću */
-    z-index: 1; /* Postavite iznad pozadine, a ispod sadržaja */
-}
+
+
+
+
+
+
+
+
+
+
 
 .hero-content {
     max-width: 800px;
@@ -347,16 +347,16 @@ footer {
     body {
         padding-top: 70px;
     }
-    
+
     .logo {
         height: 40px;
         max-width: 100px;
     }
-    
+
     .clinic-name {
         font-size: 1.2rem;
     }
-    
+
     .menu-toggle {
         display: block;
     }
@@ -374,7 +374,7 @@ footer {
         z-index: 1000;
         padding: 1rem 0;
     }
-    
+
     .nav-links.active {
         display: flex !important;
     }
@@ -383,30 +383,30 @@ footer {
         width: 100%;
         text-align: center;
     }
-    
+
     .nav-links a {
         display: block;
         padding: 0.75rem 1rem;
         text-decoration: none;
         color: #333; /* Boja teksta */
     }
-    
+
     .hero h1 {
         font-size: 2.2rem;
     }
-    
+
     .hero p {
         font-size: 1rem;
     }
-    
+
     .section-title h2 {
         font-size: 2rem;
     }
-    
+
     .booking-form {
         padding: 25px;
     }
-    
+
     .footer-content {
         grid-template-columns: 1fr;
         gap: 30px;
@@ -417,15 +417,15 @@ footer {
     .logo-wrapper {
         gap: 10px;
     }
-    
+
     .clinic-name {
         font-size: 1rem;
     }
-    
+
     .hero h1 {
         font-size: 1.8rem;
     }
-    
+
     .btn {
         padding: 10px 20px;
     }
