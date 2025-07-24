@@ -365,6 +365,46 @@ footer {
     .hero h1 {
         font-size: 1.8rem;
     }
+
+.menu-toggle {
+    display: none;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    color: var(--dark);
+    cursor: pointer;
+}
+
+/* Prikaži hamburger i sakrij meni ispod 768px */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        background-color: var(--white);
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        width: 200px;
+        display: none; /* Inicijalno sakriveno */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-radius: 10px;
+        z-index: 999;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        text-align: right;
+        padding: 10px 20px;
+    }
+
+    .nav-links a {
+        color: var(--dark);
+    }
+}
+
     
     .btn {
         padding: 10px 20px;
