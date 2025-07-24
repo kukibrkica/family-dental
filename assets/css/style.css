@@ -6,6 +6,7 @@
     --white: #ffffff;
 }
 
+
 * {
     margin: 0;
     padding: 0;
@@ -39,6 +40,7 @@ header {
 
 nav {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 }
@@ -62,17 +64,26 @@ nav {
     font-size: 1.5rem;
 }
 
+
 .nav-links {
     display: flex;
     list-style: none;
     gap: 30px;
+
+
+
+
+
+
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--dark);
     font-weight: 600;
+
     transition: color 0.3s;
+
 }
 
 .nav-links a:hover {
@@ -80,6 +91,18 @@ nav {
 }
 
 /* HERO SECTION */
+
+
+
+
+
+
+
+
+
+
+
+
 .hero {
     height: 100vh;
     position: relative;
@@ -128,11 +151,14 @@ nav {
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
+
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
 }
 
 .btn:hover {
+
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
     background-color: #3da395;
@@ -143,6 +169,19 @@ nav {
     padding: 80px 0;
     background-color: var(--light);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .section-title {
     text-align: center;
@@ -365,46 +404,6 @@ footer {
     .hero h1 {
         font-size: 1.8rem;
     }
-
-.menu-toggle {
-    display: none;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    color: var(--dark);
-    cursor: pointer;
-}
-
-/* Prikaži hamburger i sakrij meni ispod 768px */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        background-color: var(--white);
-        position: absolute;
-        top: 70px;
-        right: 20px;
-        width: 200px;
-        display: none; /* Inicijalno sakriveno */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        border-radius: 10px;
-        z-index: 999;
-    }
-
-    .nav-links li {
-        margin: 10px 0;
-        text-align: right;
-        padding: 10px 20px;
-    }
-
-    .nav-links a {
-        color: var(--dark);
-    }
-}
-
     
     .btn {
         padding: 10px 20px;
