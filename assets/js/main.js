@@ -1,49 +1,62 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle funkcionalnost
-    const initMobileMenu = function() {
+document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
+    const navLinksAll = document.querySelectorAll('.nav-links a');
 
-    if (!menuToggle || !navLinks) return;
+    // Hamburger meni toggle
+    const initMobileMenu = function () {
+        if (!menuToggle || !navLinks) return;
 
-    menuToggle.addEventListener('click', function() {
-        const isVisible = navLinks.style.display === 'flex';
-        navLinks.style.display = isVisible ? 'none' : 'flex';
-        menuToggle.innerHTML = isVisible ? '☰' : '✕';
-    });
-};
+        // Ako smo sačuvali da je meni prethodno zatvoren - sakrij odmah
+        if (window.innerWidth <= 768 && localStorage.getItem('menuClosed') === 'true') {
+            navLinks.style.display = 'none';
+            menuToggle.innerHTML = '☰';
+            localStorage.removeItem('menuClosed');
+        }
 
-    // Responzivna kontrola menija
-    const handleResponsiveMenu = function() {
-        const navLinks = document.querySelector('.nav-links');
-        const menuToggle = document.querySelector('.menu-toggle');
-        
+        menuToggle.addEventListener('click', function () {
+            const isOpen = navLinks.style.display === 'flex';
+            navLinks.style.display = isOpen ? 'none' : 'flex';
+            menuToggle.innerHTML = isOpen ? '☰' : '✕';
+        });
+
+        // Kada klikneš na link, sakrij meni i zapamti to
+        navLinksAll.forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navLinks.style.display = 'none';
+                    menuToggle.innerHTML = '☰';
+                    localStorage.setItem('menuClosed', 'true');
+                }
+            });
+        });
+    };
+
+    // Prilagodi meni pri promeni veličine prozora
+    const handleResponsiveMenu = function () {
         if (!navLinks) return;
 
         if (window.innerWidth > 768) {
-            // Desktop - prikaži meni, sakrij hamburger
             navLinks.style.display = 'flex';
             if (menuToggle) menuToggle.style.display = 'none';
         } else {
-            // Mobile - sakrij meni, prikaži hamburger
             navLinks.style.display = 'none';
-            if (menuToggle) menuToggle.style.display = 'block';
+            if (menuToggle) {
+                menuToggle.style.display = 'block';
+                menuToggle.innerHTML = '☰';
+            }
         }
     };
 
-
-
-
-    // Glatko skrolovanje
-    const initSmoothScroll = function() {
+    // Glatko skrolovanje za #linkove
+    const initSmoothScroll = function () {
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
+            anchor.addEventListener('click', function (e) {
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
+                    e.preventDefault();
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
@@ -58,6 +71,5 @@ document.addEventListener('DOMContentLoaded', function() {
     handleResponsiveMenu();
     initSmoothScroll();
 
-    // Resize event listener
-    window.addEventListener('resize', handleResponsiveMenu);
-});
+    // Reaguj na promenu veličine prozora
+    window.addEventListener('resize', handleRespon
