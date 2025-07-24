@@ -1,106 +1,43 @@
+// NOVI KOMPLETAN KOD KOJI TREBA DA ZAMENI POSTOJEĆI
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Inicijalizacija hamburger menija
-    const initMobileMenu = function() {
+    // Mobile menu toggle
+    const mobileMenuToggle = function() {
         const nav = document.querySelector('nav');
         const navLinks = document.querySelector('.nav-links');
         
-        if (nav && navLinks) {
-            // Kreiraj hamburger dugme
-            const menuToggle = document.createElement('button');
-            menuToggle.classList.add('menu-toggle');
-            menuToggle.innerHTML = '☰';
-            nav.appendChild(menuToggle);
-
-            // Sakrij meni inicijalno na mobilnim i tablet uredjajima
-            if (window.innerWidth <= 992) {
-                navLinks.style.display = 'none';
-            }
-
-            // Dodaj event listener za klik
-            menuToggle.addEventListener('click', function() {
-                const isOpen = navLinks.style.display === 'flex';
-                navLinks.style.display = isOpen ? 'none' : 'flex';
-                menuToggle.innerHTML = isOpen ? '☰' : '✕';
-                
-                // Dodaj/ukloni klasu za tranziciju
-                navLinks.classList.toggle('active', !isOpen);
-            });
+        // Kreiraj dugme za mobilni meni
+        const menuToggle = document.createElement('button');
+        menuToggle.classList.add('menu-toggle');
+        menuToggle.innerHTML = '☰';
+        nav.appendChild(menuToggle);
+        
+        // Dodaj event listener
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
+        });
+        
+        // Sakrij meni na desktopu
+        if (window.innerWidth > 768) {
+            navLinks.style.display = 'flex';
+            menuToggle.style.display = 'none';
         }
     };
 
-    // 2. Responzivna kontrola menija
-    const handleResponsiveMenu = function() {
+    // Resize event
+    window.addEventListener('resize', function() {
         const navLinks = document.querySelector('.nav-links');
         const menuToggle = document.querySelector('.menu-toggle');
         
-        if (!navLinks) return;
-
-        if (window.innerWidth > 992) {
-            // Desktop - prikaži puni meni
+        if (window.innerWidth > 768) {
             navLinks.style.display = 'flex';
-            if (menuToggle) {
-                menuToggle.style.display = 'none';
-                navLinks.classList.remove('active');
-            }
+            if (menuToggle) menuToggle.style.display = 'none';
         } else {
-            // Mobile i tablet - prikaži hamburger
+            navLinks.style.display = 'none';
             if (menuToggle) menuToggle.style.display = 'block';
         }
-    };
-
-    // 3. Glatko skrolovanje za anchor linkove
-    const initSmoothScroll = function() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#' || targetId.startsWith('#')) {
-                    e.preventDefault();
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Zatvori meni ako je otvoren
-                        if (window.innerWidth <= 992) {
-                            const navLinks = document.querySelector('.nav-links');
-                            const menuToggle = document.querySelector('.menu-toggle');
-                            if (navLinks && menuToggle) {
-                                navLinks.style.display = 'none';
-                                menuToggle.innerHTML = '☰';
-                                navLinks.classList.remove('active');
-                            }
-                        }
-                    }
-                }
-            });
-        });
-    };
-
-    // 4. Inicijalizacija svih funkcija
-    initMobileMenu();
-    handleResponsiveMenu();
-    initSmoothScroll();
-
-    // 5. Resize event za responzivnost
-    window.addEventListener('resize', function() {
-        handleResponsiveMenu();
     });
 
-    // 6. Zatvori meni pri kliku izvan (opciono)
-    document.addEventListener('click', function(e) {
-        if (window.innerWidth <= 992) {
-            const navLinks = document.querySelector('.nav-links');
-            const menuToggle = document.querySelector('.menu-toggle');
-            
-            if (navLinks && menuToggle && 
-                !e.target.closest('.nav-links') && 
-                !e.target.closest('.menu-toggle')) {
-                navLinks.style.display = 'none';
-                menuToggle.innerHTML = '☰';
-                navLinks.classList.remove('active');
-            }
-        }
-    });
+    // Inicijalizacija
+    mobileMenuToggle();
 });
