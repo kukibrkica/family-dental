@@ -99,7 +99,7 @@ nav {
 }
 
 .parallax-bg {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;
@@ -108,6 +108,17 @@ nav {
                 url('../img/hero-bg.jpg') center/cover no-repeat;
     z-index: -1;
     transform: translateZ(0);
+}
+
+.parallax-bg::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Crni overlay sa 40% providnošću */
+    z-index: 1; /* Postavite iznad pozadine, a ispod sadržaja */
 }
 
 .hero-content {
