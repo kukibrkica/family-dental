@@ -1,75 +1,49 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const navLinksAll = document.querySelectorAll('.nav-links a');
+// NOVI KOMPLETAN KOD KOJI TREBA DA ZAMENI POSTOJEĆI
+document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const mobileMenuToggle = function() {
+        const nav = document.querySelector('nav');
+        const navLinks = document.querySelector('.nav-links');
 
-    // Hamburger meni toggle
-    const initMobileMenu = function () {
-        if (!menuToggle || !navLinks) return;
-
-        // Ako smo sačuvali da je meni prethodno zatvoren - sakrij odmah
-        if (window.innerWidth <= 768 && localStorage.getItem('menuClosed') === 'true') {
-            navLinks.style.display = 'none';
-            menuToggle.innerHTML = '☰';
-            localStorage.removeItem('menuClosed');
-        }
-
-        menuToggle.addEventListener('click', function () {
-            const isOpen = navLinks.style.display === 'flex';
-            navLinks.style.display = isOpen ? 'none' : 'flex';
-            menuToggle.innerHTML = isOpen ? '☰' : '✕';
+        // Kreiraj dugme za mobilni meni
+        const menuToggle = document.createElement('button');
+        menuToggle.classList.add('menu-toggle');
+        menuToggle.innerHTML = '☰';
+        nav.appendChild(menuToggle);
+        
+        // Dodaj event listener
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ? '✕' : '☰';
         });
-
-        // Kada klikneš na link, sakrij meni i zapamti to
-        navLinksAll.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth <= 768) {
-                    navLinks.style.display = 'none';
-                    menuToggle.innerHTML = '☰';
-                    localStorage.setItem('menuClosed', 'true');
-                }
-            });
-        });
-    };
-
-    // Prilagodi meni pri promeni veličine prozora
-    const handleResponsiveMenu = function () {
-        if (!navLinks) return;
-
+        
+        // Sakrij meni na desktopu
         if (window.innerWidth > 768) {
             navLinks.style.display = 'flex';
-            if (menuToggle) menuToggle.style.display = 'none';
-        } else {
-            navLinks.style.display = 'none';
-            if (menuToggle) {
-                menuToggle.style.display = 'block';
-                menuToggle.innerHTML = '☰';
-            }
+            menuToggle.style.display = 'none';
         }
     };
 
-    // Glatko skrolovanje za #linkove
-    const initSmoothScroll = function () {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    };
+    // Resize event
+    window.addEventListener('resize', function() {
+        const navLinks = document.querySelector('.nav-links');
+        const menuToggle = document.querySelector('.menu-toggle');
+
+        if (window.innerWidth > 768) {
+
+
+
+            navLinks.style.display = 'flex';
+            if (menuToggle) menuToggle.style.display = 'none';
+
+
+
+        } else {
+            navLinks.style.display = 'none';
+            if (menuToggle) menuToggle.style.display = 'block';
+        }
+    });
 
     // Inicijalizacija
-    initMobileMenu();
-    handleResponsiveMenu();
-    initSmoothScroll();
-
-    // Reaguj na promenu veličine prozora
-    window.addEventListener('resize', handleRespon
+    mobileMenuToggle();
+});
