@@ -68,13 +68,9 @@ nav {
 .nav-links {
     display: flex;
     list-style: none;
-    gap: 30px;
-
-
-
-
-
-
+    margin: 0;
+    padding: 0;
+    gap: 1rem; /* Razmak između linkova */
 }
 
 .nav-links a {
@@ -91,18 +87,6 @@ nav {
 }
 
 /* HERO SECTION */
-
-
-
-
-
-
-
-
-
-
-
-
 .hero {
     height: 100vh;
     position: relative;
@@ -169,19 +153,6 @@ nav {
     padding: 80px 0;
     background-color: var(--light);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .section-title {
     text-align: center;
@@ -351,6 +322,15 @@ footer {
     font-size: 0.9rem;
 }
 
+.menu-toggle {
+    display: none; /* Sakriveno na desktopu */
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
 /* RESPONSIVE STYLES */
 @media (max-width: 768px) {
     body {
@@ -366,8 +346,38 @@ footer {
         font-size: 1.2rem;
     }
     
+    .menu-toggle {
+        display: block;
+    }
+
     .nav-links {
         gap: 15px;
+        display: none !important; /* !important osigurava da JS ne može da overriduje ovo dok se stranica ne učita */
+        flex-direction: column; /* Ovo je ključno za vertikalni prikaz */
+        position: absolute;
+        top: 100%; /* Ispod header-a */
+        left: 0;
+        width: 100%;
+        background: #fff; /* Boja pozadine */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Senka za izgled dropdown-a */
+        z-index: 1000;
+        padding: 1rem 0;
+    }
+    
+    .nav-links.active {
+        display: flex !important;
+    }
+
+    .nav-links li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    .nav-links a {
+        display: block;
+        padding: 0.75rem 1rem;
+        text-decoration: none;
+        color: #333; /* Boja teksta */
     }
     
     .hero h1 {
