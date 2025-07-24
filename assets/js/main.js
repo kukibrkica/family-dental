@@ -11,23 +11,28 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks.style.display = isVisible ? 'none' : 'flex';
         menuToggle.innerHTML = isVisible ? '☰' : '✕';
     });
-
-    };
+};
 
     // Responzivna kontrola menija
     const handleResponsiveMenu = function() {
-    const navLinks = document.querySelector('.nav-links');
-    const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const menuToggle = document.querySelector('.menu-toggle');
+        
+        if (!navLinks) return;
 
-    if (window.innerWidth > 768) {
-        navLinks.style.display = 'flex';
-        if (menuToggle) {
-            menuToggle.innerHTML = '☰';
+        if (window.innerWidth > 768) {
+            // Desktop - prikaži meni, sakrij hamburger
+            navLinks.style.display = 'flex';
+            if (menuToggle) menuToggle.style.display = 'none';
+        } else {
+            // Mobile - sakrij meni, prikaži hamburger
+            navLinks.style.display = 'none';
+            if (menuToggle) menuToggle.style.display = 'block';
         }
-    } else {
-        navLinks.style.display = 'none';
-    }
-};
+    };
+
+
+
 
     // Glatko skrolovanje
     const initSmoothScroll = function() {
