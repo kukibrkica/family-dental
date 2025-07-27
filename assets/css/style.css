@@ -333,6 +333,12 @@ footer {
     font-size: 1.5rem;
     cursor: pointer;
     padding: 0.5rem;
+    color: var(--secondary); /* Boja ikonice */
+}
+
+.menu-toggle:hover {
+    color: var(--primary); /* Boja na hover */
+    transform: scale(1.1);
 }
 
 /* RESPONSIVE STYLES */
