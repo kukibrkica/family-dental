@@ -330,7 +330,7 @@ footer {
     display: none; /* Sakriveno na desktopu */
     background: none;
     border: none;
-    font-size: 1.5rem;
+    font-size: 2rem;
     cursor: pointer;
     padding: 0.5rem;
     color: var(--secondary); /* Boja ikonice */
