@@ -37,37 +37,43 @@
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-title">
-                <h2>Naše usluge</h2>
-                <p>Pružamo kompletnu stomatološku negu korišćenjem najsavremenije tehnologije.</p>
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-title">
+            <h2>Naše usluge</h2>
+            <p>Pružamo kompletnu stomatološku negu korišćenjem najsavremenije tehnologije.</p>
+        </div>
+        <div class="services-grid">
+            <!-- Service Card 1 -->
+            <div class="service-card" data-service-id="preventivna">
+                <div class="service-img" style="background-image: url('./assets/img/preventivna.jpg');"></div>
+                <div class="service-content">
+                    <h3>Preventivna stomatologija</h3>
+                    <p>Redovni pregledi i profesionalno čišćenje zuba za održavanje oralnog zdravlja.</p>
+                </div>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('./assets/img/preventivna.jpg');"></div>
-                    <div class="service-content">
-                        <h3>Preventivna stomatologija</h3>
-                        <p>Redovni pregledi i profesionalno čišćenje zuba za održavanje oralnog zdravlja.</p>
-                    </div>
+            
+            <!-- Service Card 2 -->
+            <div class="service-card" data-service-id="estetska">
+                <div class="service-img" style="background-image: url('./assets/img/estetska.jpg');"></div>
+                <div class="service-content">
+                    <h3>Estetska stomatologija</h3>
+                    <p>Izbjeljivanje zuba, furniri i druge procedure za savršen osmeh.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('./assets/img/estetska.jpg');"></div>
-                    <div class="service-content">
-                        <h3>Estetska stomatologija</h3>
-                        <p>Izbjeljivanje zuba, furniri i druge procedure za savršen osmeh.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
-                    <div class="service-content">
-                        <h3>Oralna hirurgija</h3>
-                        <p>Vađenje zuba, implantologija i druge hirurške intervencije.</p>
-                    </div>
+            </div>
+            
+            <!-- Service Card 3 -->
+            <div class="service-card" data-service-id="hirurgija">
+                <div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');"></div>
+                <div class="service-content">
+                    <h3>Oralna hirurgija</h3>
+                    <p>Vađenje zuba, implantologija i druge hirurške intervencije.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
+
 
     <!-- Booking Section -->
     <section class="booking" id="booking">
@@ -134,5 +140,14 @@
     </footer>
 
     <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/services-modal.js" defer></script>
+
+<!-- Dodajte ovo pre zatvaranja </body> -->
+<div id="serviceModal" class="fd-modal">
+    <div class="fd-modal-content">
+        <button class="fd-modal-close" aria-label="Zatvori modal">&times;</button>
+        <div id="fdModalContent"></div>
+    </div>
+</div>
 </body>
 </html>

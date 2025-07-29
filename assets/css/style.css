@@ -429,3 +429,89 @@ footer {
         padding: 10px 20px;
     }
 }
+
+/* POSLEDNJA SEKCIJA U VAŠEM CSS-U */
+/* ===== MODAL STYLES ===== */
+.fd-modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    overflow-y: auto;
+}
+
+.fd-modal-content {
+    background: var(--white);
+    margin: 5% auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 700px;
+    position: relative;
+}
+
+.fd-modal-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    color: var(--secondary);
+    cursor: pointer;
+    background: none;
+    border: none;
+}
+/* Stilovi za modal sliku */
+.fd-modal-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    object-fit: cover;
+    max-height: 300px; /* Ograničavamo maksimalnu visinu */
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Responsivne prilagodbe */
+@media (max-width: 768px) {
+    .fd-modal-img {
+        max-height: 200px;
+    }
+    
+    .fd-modal-grid {
+        grid-template-columns: 1fr !important;
+    }
+}
+
+/* Kontrola veličine modala */
+.fd-modal-content {
+    max-width: 800px;
+    width: 90%;
+}
+
+.fd-modal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Obavezno dodajte u CSS */
+.fd-modal-text {
+    overflow-y: auto;
+    max-height: 300px;
+    padding-right: 10px;
+}
+
+.fd-modal-text::-webkit-scrollbar {
+    width: 5px;
+}
+
+.fd-modal-text::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 5px;
+}
