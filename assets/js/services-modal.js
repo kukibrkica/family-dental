@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
         modalContent.innerHTML = `
             <div class="fd-modal-header">
                 <h2>${escapeHtml(service.title)}</h2>
-                <button class="fd-modal-close">&times;</button>
+                <button class="fd-modal-close" aria-label="Zatvori">&times;</button>
             </div>
             <div class="fd-modal-content">
             <img src="${escapeHtml(service.image)}" loading="lazy" alt="${escapeHtml(service.title)}" class="fd-modal-img">
@@ -120,12 +120,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Event listeneri za zatvaranje modala
-    modal.addEventListener('click', function(e) {
-        if (e.target === modal || e.target.classList.contains('fd-modal-close')) {
-            closeModal();
-        }
-    });
+
 
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
