@@ -454,17 +454,6 @@ footer {
     color: var(--secondary);
 }
 
-.fd-modal-text a {
-    color: var(--primary);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--primary);
-}
-
-.fd-modal-text a:hover {
-    color: var(--secondary);
-    border-bottom-style: solid;
-}
-
 fd-modal-body {
     display: flex;
     flex-direction: column;
