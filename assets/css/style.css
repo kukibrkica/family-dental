@@ -187,6 +187,7 @@ nav {
     overflow: hidden;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     transition: all 0.3s;
+    will-change: transform;
 }
 
 .service-card:hover {
@@ -341,7 +342,165 @@ footer {
     transform: scale(1.1);
 }
 
-/* RESPONSIVE STYLES */
+
+/* POSLEDNJA SEKCIJA U VAŠEM CSS-U */
+/* ===== MODAL STYLES ===== */
+.fd-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    z-index: 2000;
+    overflow-y: auto;
+    padding: 20px 0;
+}
+
+.fd-modal-content {
+    background: var(--white);
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.fd-modal-close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 28px;
+    color: var(--secondary);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+/* Stilovi za modal sliku */
+/* Raspored slike i teksta - UVEK SLIKA IZNAD TEKSTA */
+.fd-modal-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.fd-modal-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin: 0 auto;
+}
+
+/* Obavezno dodajte u CSS */
+.fd-modal-text {
+    overflow: visible;
+}
+
+.fd-modal-text::-webkit-scrollbar {
+    width: 5px;
+}
+
+.fd-modal-text::-webkit-scrollbar-thumb {
+    background: var(--primary);
+    border-radius: 5px;
+}
+
+/* Stilovi za modal tekst */
+.fd-modal-text {
+    font-family: 'Open Sans', sans-serif;
+    color: var(--dark);
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+.fd-modal-text h2 {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary);
+}
+
+.fd-modal-text p {
+    margin-bottom: 15px;
+}
+
+.fd-modal-text ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.fd-modal-text li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 15px;
+}
+
+.fd-modal-text li::before {
+    content: "•";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+    font-size: 1.2rem;
+}
+
+.fd-modal-text strong {
+    color: var(--secondary);
+}
+
+fd-modal-body {
+    display: flex;
+    flex-direction: column;
+    max-height: 90vh;
+}
+
+.fd-modal-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+}
+
+/* Stil za dugme */
+.fd-booking-btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-block;
+    align-self: center;
+}
+
+.fd-booking-btn:hover {
+    background-color: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.fd-modal-header {
+    margin-bottom: 20px;
+    text-align: center;
+    position: relative;
+}
+
+.fd-modal-title {
+    color: var(--secondary);
+    font-size: 2rem;
+    margin: 0;
+    padding-bottom: 10px;
+    border-bottom: 3px solid var(--primary);
+    display: inline-block;
+}
+
 @media (max-width: 768px) {
     body {
         padding-top: 70px;
@@ -410,6 +569,29 @@ footer {
         grid-template-columns: 1fr;
         gap: 30px;
     }
+    
+    .fd-modal-img {
+        max-height: 200px;
+    }
+    
+    .fd-modal-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .fd-modal-text {
+        font-size: 0.9rem;
+    }
+    
+    .fd-modal-text h2 {
+        font-size: 1.3rem;
+    }
+    
+    .fd-modal-title {
+        font-size: 1.5rem;
+    }
+    
+    .fd-booking-btn {
+        padding: 10px 20px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -430,88 +612,22 @@ footer {
     }
 }
 
-/* POSLEDNJA SEKCIJA U VAŠEM CSS-U */
-/* ===== MODAL STYLES ===== */
-.fd-modal {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.9);
-    overflow-y: auto;
+.fd-modal-text a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary);
 }
 
-.fd-modal-content {
-    background: var(--white);
-    margin: 5% auto;
-    padding: 30px;
-    border-radius: 10px;
-    width: 90%;
-    max-width: 700px;
-    position: relative;
-}
-
-.fd-modal-close {
-    position: absolute;
-    right: 20px;
-    top: 15px;
-    font-size: 30px;
+.fd-modal-text a:hover {
     color: var(--secondary);
-    cursor: pointer;
-    background: none;
-    border: none;
-}
-/* Stilovi za modal sliku */
-.fd-modal-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-    object-fit: cover;
-    max-height: 300px; /* Ograničavamo maksimalnu visinu */
-    width: 100%;
-    display: block;
-    margin: 0 auto;
+    border-bottom-style: solid;
 }
 
-/* Responsivne prilagodbe */
-@media (max-width: 768px) {
-    .fd-modal-img {
-        max-height: 200px;
-    }
-    
-    .fd-modal-grid {
-        grid-template-columns: 1fr !important;
-    }
-}
-
-/* Kontrola veličine modala */
-.fd-modal-content {
-    max-width: 800px;
-    width: 90%;
-}
-
-.fd-modal-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    align-items: center;
-}
-
-/* Obavezno dodajte u CSS */
-.fd-modal-text {
-    overflow-y: auto;
-    max-height: 300px;
-    padding-right: 10px;
-}
-
-.fd-modal-text::-webkit-scrollbar {
-    width: 5px;
-}
-
-.fd-modal-text::-webkit-scrollbar-thumb {
-    background: var(--primary);
-    border-radius: 5px;
+.price-tag {
+    background-color: var(--light);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
 }
