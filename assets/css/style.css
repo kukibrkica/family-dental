@@ -57,14 +57,9 @@ nav {
     max-width: 160px;
 }
 
-
-.clinic-name {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    color: var(--secondary);
-    font-size: 1.5rem;
+ul {
+    list-style: none;
 }
-
 
 .nav-links {
     display: flex;
@@ -437,9 +432,9 @@ footer {
 }
 
 .fd-modal-text li {
-    margin-bottom: 8px;
     position: relative;
-    padding-left: 15px;
+    padding-left: 1.5em; /* Prostor za custom bullet */
+    margin-bottom: 0.5em;
 }
 
 .fd-modal-text li::before {
