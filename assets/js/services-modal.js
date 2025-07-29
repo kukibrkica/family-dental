@@ -120,6 +120,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Event listener za zatvaranje modala
+    modal.addEventListener('click', function(e) {
+        // Proveravamo da li je kliknut sam modal (overlay)
+        // a ne njegova deca (sadržaj unutra)
+        if (e.target === this) {
+            closeModal();
+        }
+    });
 
 
     document.addEventListener('keydown', function(e) {

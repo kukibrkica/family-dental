@@ -368,6 +368,12 @@ footer {
     position: relative;
     display: flex;
     flex-direction: column;
+    pointer-events: none;
+}
+
+.fd-modal-content > * {
+    /* Vraća interaktivnost elementima unutar modala */
+    pointer-events: auto;
 }
 
 .fd-modal-close {
