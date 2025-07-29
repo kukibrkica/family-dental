@@ -1,4 +1,5 @@
 // services-modal.js
+
 document.addEventListener('DOMContentLoaded', function() {
     // Podaci o uslugama (može se premestiti u JSON fajl ako želite)
     const servicesData = {
@@ -53,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('serviceModal');
     const modalContent = document.getElementById('fdModalContent');
     const serviceCards = document.querySelectorAll('.service-card');
-    const closeBtn = document.querySelector('.fd-modal-close');
 
     // Provera da li elementi postoje
     if (!modal || !modalContent || serviceCards.length === 0) {
@@ -66,72 +66,82 @@ document.addEventListener('DOMContentLoaded', function() {
         const service = servicesData[serviceId];
         if (!service) return;
 
+        // Postavite ARIA atribute OVDE - pre innerHTML
+        modal.setAttribute('aria-hidden', 'false');
+        const mainContent = document.querySelector('.hero, .services, .booking, footer');
+        if (mainContent) {
+            mainContent.setAttribute('aria-hidden', 'true');
+        }
+
         modalContent.innerHTML = `
-            <h2>${service.title}</h2>
-            <div class="fd-modal-grid">
-                <img src="${service.image}" alt="${service.title}" class="fd-modal-img">
-                <div class="fd-modal-text">
+            <div class="fd-modal-header">
+                <h2>${escapeHtml(service.title)}</h2>
+                <button class="fd-modal-close">&times;</button>
+            </div>
+            <div class="fd-modal-content">
+            <img src="${escapeHtml(service.image)}" loading="lazy" alt="${escapeHtml(service.title)}" class="fd-modal-img">
+            <div class="fd-modal-text">
                     ${service.description}
                     <button class="fd-booking-btn">Zakaži termin</button>
                 </div>
             </div>
-        `;
-        
-        modal.style.display = 'block';
-        document.body.style.overflow = 'hidden';
-        document.documentElement.style.paddingRight = getScrollbarWidth() + 'px';
-        
-        // Dodajemo event listener za booking dugme
-        const bookingBtn = modalContent.querySelector('.fd-booking-btn');
-        if (bookingBtn) {
-            bookingBtn.addEventListener('click', function() {
-                window.location.href = '#booking';
-                closeModal();
-            });
-        }
-    }
+    `;
+    
+    modal.style.display = 'block';
+    document.body.style.overflow = 'hidden';
+
+    // Dodajemo event listener za close dugme
+    modalContent.querySelector('.fd-modal-close').addEventListener('click', closeModal);
+    
+    // Dodajemo event listener za booking dugme
+    modalContent.querySelector('.fd-booking-btn')?.addEventListener('click', function() {
+            window.location.href = '#booking';
+            closeModal();
+        });
+    }    
 
     // Funkcija za zatvaranje modala
     function closeModal() {
-        modal.style.display = 'none';
-        document.body.style.overflow = 'auto';
-        document.documentElement.style.paddingRight = '';
+         modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    
+    modal.setAttribute('aria-hidden', 'true');
+    const mainContent = document.querySelector('.hero, .services, .booking, footer');
+    if (mainContent) {
+        mainContent.setAttribute('aria-hidden', 'false');
+    }
     }
 
     // Event listeneri za kartice usluga
     serviceCards.forEach(card => {
         card.addEventListener('click', function() {
-            const serviceId = this.getAttribute('data-service-id') || 
-                             this.querySelector('[data-service-id]')?.getAttribute('data-service-id');
+            const serviceId = this.getAttribute('data-service-id');
             if (serviceId) openModal(serviceId);
         });
     });
 
     // Event listeneri za zatvaranje modala
-    closeBtn.addEventListener('click', closeModal);
-    
     modal.addEventListener('click', function(e) {
-        if (e.target === modal) closeModal();
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal.style.display === 'block') {
+        if (e.target === modal || e.target.classList.contains('fd-modal-close')) {
             closeModal();
         }
     });
 
-    // Pomocna funkcija za scrollbar width
-    function getScrollbarWidth() {
-        return window.innerWidth - document.documentElement.clientWidth;
-    }
-
-    // Dodajemo data-service-id atribut kartama ako ga već nemaju
-    serviceCards.forEach((card, index) => {
-        if (!card.hasAttribute('data-service-id')) {
-            const services = Object.keys(servicesData);
-            if (services[index]) {
-                card.setAttribute('data-service-id', services[index]);
-            }
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
         }
     });
 });
+
+function escapeHtml(unsafe) {
+    return unsafe.replace(/[&<"'>]/g, function(m) {
+        return {
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            '"': '&quot;',
+            "'": '&#39;'
+        }[m];
+    });
+}
