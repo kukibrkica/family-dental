@@ -139,7 +139,6 @@ nav {
     border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
-
     transition: all 0.3s;
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 
@@ -402,11 +401,6 @@ footer {
     margin: 0 auto;
 }
 
-/* Obavezno dodajte u CSS */
-.fd-modal-text {
-    overflow: visible;
-}
-
 .fd-modal-text::-webkit-scrollbar {
     width: 5px;
 }
@@ -422,6 +416,7 @@ footer {
     color: var(--dark);
     line-height: 1.6;
     font-size: 1rem;
+    overflow: visible;
 }
 
 .fd-modal-text h2 {
@@ -457,6 +452,17 @@ footer {
 
 .fd-modal-text strong {
     color: var(--secondary);
+}
+
+.fd-modal-text a {
+    color: var(--primary);
+    text-decoration: none;
+    border-bottom: 1px dashed var(--primary);
+}
+
+.fd-modal-text a:hover {
+    color: var(--secondary);
+    border-bottom-style: solid;
 }
 
 fd-modal-body {
@@ -506,6 +512,7 @@ fd-modal-body {
     border-bottom: 3px solid var(--primary);
     display: inline-block;
 }
+
 
 @media (max-width: 768px) {
     body {
@@ -616,17 +623,6 @@ fd-modal-body {
     .btn {
         padding: 10px 20px;
     }
-}
-
-.fd-modal-text a {
-    color: var(--primary);
-    text-decoration: none;
-    border-bottom: 1px dashed var(--primary);
-}
-
-.fd-modal-text a:hover {
-    color: var(--secondary);
-    border-bottom-style: solid;
 }
 
 .price-tag {
