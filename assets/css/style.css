@@ -13,12 +13,14 @@
     box-sizing: border-box;
 }
 
+
 body {
     font-family: 'Open Sans', sans-serif;
     color: var(--dark);
     line-height: 1.6;
     padding-top: 80px; /* Space for fixed header */
 }
+
 
 .container {
     width: 100%;
@@ -150,6 +152,7 @@ ul {
 .services {
     padding: 80px 0;
     background-color: var(--light);
+    background-image: url('../img/page_bg.png');
 }
 
 .section-title {
