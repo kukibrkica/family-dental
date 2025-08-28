@@ -19,7 +19,12 @@ body {
     color: var(--dark);
     line-height: 1.6;
     padding-top: 80px; /* Space for fixed header */
+
+    background-image: url('../img/page_bg.png');
+    background-size: 200px;
+background-repeat: repeat; 
 }
+
 
 
 .container {
@@ -151,8 +156,6 @@ ul {
 /* SERVICES SECTION */
 .services {
     padding: 80px 0;
-    background-color: var(--light);
-    background-image: url('../img/page_bg.png');
 }
 
 .section-title {
