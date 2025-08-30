@@ -20,8 +20,10 @@ body {
     line-height: 1.6;
     padding-top: 80px; /* Space for fixed header */
 
-    background-image: url('../img/page_bg.png');
+    background-image: url('../img/page_bg1.png');
     background-size: contain;
+    background-size: 200px;
+background-repeat: repeat; 
 }
 
 
