@@ -362,8 +362,8 @@ footer {
 .fd-modal-content {
     background: var(--white);
     margin: 0 auto;
-    padding: 45px;
-    border-radius: 77px;
+    padding: 30px;
+    border-radius: 60px;
     width: 90%;
     max-width: 800px;
     position: relative;
